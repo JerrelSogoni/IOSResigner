@@ -1,5 +1,5 @@
 # IOSResigner
-# Requirements: Python 3.9+, Mac Device
+# Requirements: Python 3.9+, macOS
 
 # To use the script
 # Initalize configurations in the config folder: config.json
