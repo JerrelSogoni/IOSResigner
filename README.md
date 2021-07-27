@@ -3,7 +3,9 @@
 Python 3.9+, macOS
 
 # To use the script
-Initialize configurations in the config folder: config.json 
+Initialize configurations in the config folder: config.json
+
+Ensure that the ipa file matches application name in the Payload folder, when you unzip the .ipa
 
 "config_path" - Absolute Path of your config folder for the project, any path you would like.
 
