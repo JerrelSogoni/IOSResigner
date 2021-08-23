@@ -64,16 +64,15 @@ class IOSApplicationBuilder(IOSBuilder):
         OSCmdExecuter.run(resign_framework_cmd)
 
     def buildZipSolution(self):
-        swift_support_uri = os.path.join(self.ios_project_config.base_path, SWIFTSUPPORT_FOLDER)
-        symbols_uri = os.path.join(self.ios_project_config.base_path, SYMBOLS_FOLDER)
         resign_solution_uri = os.path.join(self.ios_project_config.base_path, RESIGN_SOLUTION)
         resign_solution_file_uri = os.path.join(resign_solution_uri,
                                                 self.ios_project_config.config[IOS_APPLICATION_NAME] + IPA_EXTENSION)
 
-        zip_solution_cmd = "zip -qr " + \
+        zip_solution_cmd = "cd " + self.resigner_uri + ";" + \
+                           "zip -qr " + \
                            "\"" + resign_solution_file_uri + "\"" + " " + \
-                           "\"" + self.payload_uri + "\"" + " " + \
-                           "\"" + swift_support_uri + "\"" + " " + \
-                           "\"" + symbols_uri + "\""
+                           "\"" + PAYLOAD_FOLDER + "\"" + " " + \
+                           "\"" + SWIFTSUPPORT_FOLDER + "\"" + " " + \
+                           "\"" + SYMBOLS_FOLDER + "\""
 
         OSCmdExecuter.run(zip_solution_cmd)
