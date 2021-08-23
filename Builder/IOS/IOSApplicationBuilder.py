@@ -47,10 +47,13 @@ class IOSApplicationBuilder(IOSBuilder):
 
         self.ios_application.plugins = plugins
 
-        build_components = [self.ios_application] + self.ios_application.plugins
+        build_components =  self.ios_application.plugins + [self.ios_application]
+        builders = []
+
 
         for component in build_components:
             component_builder = IOSComponentBuilder(self.ios_project_config, component)
+            builders.append(component_builder)
             component_builder.reset()
             component_builder.build()
 
