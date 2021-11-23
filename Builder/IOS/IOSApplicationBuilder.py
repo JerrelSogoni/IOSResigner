@@ -47,13 +47,10 @@ class IOSApplicationBuilder(IOSBuilder):
 
         self.ios_application.plugins = plugins
 
-        build_components =  self.ios_application.plugins + [self.ios_application]
-        builders = []
-
+        build_components = self.ios_application.plugins + [self.ios_application]
 
         for component in build_components:
             component_builder = IOSComponentBuilder(self.ios_project_config, component)
-            builders.append(component_builder)
             component_builder.reset()
             component_builder.build()
 
@@ -71,7 +68,7 @@ class IOSApplicationBuilder(IOSBuilder):
         resign_solution_file_uri = os.path.join(resign_solution_uri,
                                                 self.ios_project_config.config[IOS_APPLICATION_NAME] + IPA_EXTENSION)
 
-        zip_solution_cmd = "cd " + self.resigner_uri + ";" + \
+        zip_solution_cmd = "cd " + "\"" + self.resigner_uri + "\"" + ";" + \
                            "zip -qr " + \
                            "\"" + resign_solution_file_uri + "\"" + " " + \
                            "\"" + PAYLOAD_FOLDER + "\"" + " " + \
