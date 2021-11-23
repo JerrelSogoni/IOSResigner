@@ -29,7 +29,7 @@ class IOSComponentBuilder(IOSBuilder):
 
     def buildProperties(self):
         self.component.property.setTeamId(self.config.config[TEAM_ID])
-        bundle_id_prompt = "Please Enter Builder ID for: " + self.component.property.name
+        bundle_id_prompt = "Please Enter Builder ID for " + self.component.property.name + ": "
         self.component.property.setBundleId(input(bundle_id_prompt))
 
     def buildEntitlement(self):
